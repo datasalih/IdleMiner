@@ -61,7 +61,7 @@ public class Managers : MonoBehaviour
             }
         }
 
-        if (miner1.miningpower1 >= 10)
+        if (miner1.miningpower1 >= 15)
         {
             Transform firstchild = transform.GetChild(0);
 
@@ -97,7 +97,7 @@ public class Managers : MonoBehaviour
             }
         }
 
-        if (miner2.miningpower2 >= 15)
+        if (miner2.miningpower2 >= 20)
         {
             Transform firstchild = transform.GetChild(1);
 
@@ -129,7 +129,7 @@ public class Managers : MonoBehaviour
         }
 
 
-        if (miner3.miningpower3 >= 25)
+        if (miner3.miningpower3 >= 30)
         {
             Transform firstchild = transform.GetChild(2);
 
@@ -158,7 +158,7 @@ public class Managers : MonoBehaviour
             }
         }
 
-        if (miner4.miningpower4 >= 40)
+        if (miner4.miningpower4 >= 45)
         {
             Transform firstchild = transform.GetChild(3);
 
@@ -187,7 +187,7 @@ public class Managers : MonoBehaviour
             }
         }
 
-        if (miner5.miningpower5 >= 70)
+        if (miner5.miningpower5 >= 75)
         {
             Transform firstchild = transform.GetChild(4);
 
@@ -215,7 +215,7 @@ public class Managers : MonoBehaviour
             }
         }
 
-        if (miner6.miningpower6 >= 130)
+        if (miner6.miningpower6 >= 135)
         {
             Transform firstchild = transform.GetChild(5);
 

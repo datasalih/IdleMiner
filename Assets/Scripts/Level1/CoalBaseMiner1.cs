@@ -103,60 +103,66 @@ public class CoalBaseMiner1: MonoBehaviour
     {
 
         collecting1 = true;
-        anim.SetBool("Walking", true);
-        anim.SetBool("Idle", false);
 
-        // Move to mining position with ease
-        transform.DOMoveX(miningLocation.position.x, moveSpeed).SetEase(Ease.Linear).OnComplete(() =>
+        if(collecting1)
         {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Mining", true);
+            anim.SetBool("Walking", true);
+            anim.SetBool("Idle", false);
 
-            // Delay for 5 seconds for mining animation
-            DOVirtual.DelayedCall(miningspeed1, () =>
+            // Move to mining position with ease
+            transform.DOMoveX(miningLocation.position.x, moveSpeed).SetEase(Ease.Linear).OnComplete(() =>
             {
-                anim.SetBool("Mining", false);
+                anim.SetBool("Walking", false);
+                anim.SetBool("Mining", true);
 
-                // Rotate to the opposite position with ease
-                transform.DORotate(new Vector3(0, 180, 0), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+                // Delay for 5 seconds for mining animation
+                DOVirtual.DelayedCall(miningspeed1, () =>
                 {
-                    anim.SetBool("Walking", true);
+                    anim.SetBool("Mining", false);
 
-                    // Move back to the deposit location with ease
-                    transform.DOMoveX(depositLocation.position.x, moveSpeed).SetEase(Ease.Linear).OnComplete(() =>
+                    // Rotate to the opposite position with ease
+                    transform.DORotate(new Vector3(0, 180, 0), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
                     {
-                        anim.SetBool("Walking", false);
-                        anim.SetBool("Idle", true);
+                        anim.SetBool("Walking", true);
 
-                        // Delay for 5 seconds at the deposit location
-                        DOVirtual.DelayedCall(miningspeed1, () =>
+                        // Move back to the deposit location with ease
+                        transform.DOMoveX(depositLocation.position.x, moveSpeed).SetEase(Ease.Linear).OnComplete(() =>
                         {
-                            anim.SetBool("Walking", true);
-                            anim.SetBool("Idle", false);
+                            anim.SetBool("Walking", false);
+                            anim.SetBool("Idle", true);
 
-                            // Rotate back to the initial rotation with ease
-                            transform.DORotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+                            // Delay for 5 seconds at the deposit location
+                            DOVirtual.DelayedCall(miningspeed1, () =>
                             {
-                                anim.SetBool("Walking", false);
-                                anim.SetBool("Idle", true);
-                                coinSound.GetComponent<AudioSource>().Play();
-                                goldmanager.goldAmount += miningpower1;
-                                PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
-                                PlayerPrefs.Save(); 
-                                collecting1 = false;
-                                shaftbutton1.GetComponent<Button>().interactable = true;
+                                anim.SetBool("Walking", true);
+                                anim.SetBool("Idle", false);
 
-                                // If automining1 is true, start the next sequence
-                                if (unlockmanager.autounlocked1)
+                                // Rotate back to the initial rotation with ease
+                                transform.DORotate(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.Linear).OnComplete(() =>
                                 {
-                                    MoveMiner1();
-                                }
+                                    anim.SetBool("Walking", false);
+                                    anim.SetBool("Idle", true);
+                                    coinSound.GetComponent<AudioSource>().Play();
+                                    goldmanager.goldAmount += miningpower1;
+                                    PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
+                                    PlayerPrefs.Save();
+                                    collecting1 = false;
+                                    shaftbutton1.GetComponent<Button>().interactable = true;
+
+                                    // If automining1 is true, start the next sequence
+                                    if (unlockmanager.autounlocked1)
+                                    {
+                                        MoveMiner1();
+                                    }
+                                });
                             });
                         });
                     });
                 });
             });
-        });
+        }
+
+       
     }
 
 

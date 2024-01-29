@@ -82,7 +82,7 @@ public class BaseMiner5 : MonoBehaviour
                                 anim.SetBool("Idle", true);
                                 coinSound.GetComponent<AudioSource>().Play();
                                 goldmanager.goldAmount += miningpower5;
-                                PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
+                                PlayerPrefs.SetInt("coalgold", goldmanager.goldAmount);
                                 PlayerPrefs.Save(); // Update the same goldAmount variable
                                 collecting5 = false;
 

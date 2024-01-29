@@ -6,7 +6,7 @@ using UnityEngine;
 public class GoldManager : MonoBehaviour
 {
 
-    public  int goldAmount = 0; // Make goldAmount static
+    public  int goldAmount; // Make goldAmount static
     public TMP_Text coinText;
 
     // Start is called before the first frame update
@@ -22,6 +22,13 @@ public class GoldManager : MonoBehaviour
 
     }
 
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt("gold", goldAmount);
+        PlayerPrefs.Save();
+
+    }
 
 
 }

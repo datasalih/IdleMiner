@@ -15,6 +15,7 @@ public class UnlockManager : MonoBehaviour
 
     public GoldManager goldmanager;
     public Managers manager;
+    public InsAds ads;
 
     int shaft2Price = 20;
     int shaft3Price = 100;
@@ -308,32 +309,32 @@ public class UnlockManager : MonoBehaviour
 
  
 
-        if (miner1.miningpower1 >= 10)
+        if (miner1.miningpower1 >= 15)
         {
             powerprice1text.text = "Max";
         }
 
-        if (miner2.miningpower2 >= 15)
+        if (miner2.miningpower2 >= 20)
         {
             powerprice2text.text = "Max";
         }
 
-        if (miner3.miningpower3 >= 25)
+        if (miner3.miningpower3 >= 30)
         {
             powerprice3text.text = "Max";
         }
 
-        if (miner4.miningpower4 >= 40) // Added for miner4
+        if (miner4.miningpower4 >= 45) // Added for miner4
         {
             powerprice4text.text = "Max";
         }
 
-        if (miner5.miningpower5 >= 70) // Added for miner4
+        if (miner5.miningpower5 >= 75) // Added for miner4
         {
             powerprice5text.text = "Max";
         }
 
-        if (miner6.miningpower6 >= 130) // Added for miner4
+        if (miner6.miningpower6 >= 135) // Added for miner4
         {
             powerprice6text.text = "Max";
         }
@@ -361,7 +362,7 @@ public class UnlockManager : MonoBehaviour
             {
                 Unlockables.transform.GetChild(1).gameObject.SetActive(true);
             }
-
+            ads.ShowAd();
         }
 
     }
@@ -412,6 +413,8 @@ public class UnlockManager : MonoBehaviour
             {
                 Unlockables.transform.GetChild(3).gameObject.SetActive(true);
             }
+            ads.ShowAd();
+
         }
 
     }
@@ -459,6 +462,8 @@ public class UnlockManager : MonoBehaviour
             {
                 Unlockables.transform.GetChild(5).gameObject.SetActive(true);
             }
+            ads.ShowAd();
+
         }
     }
 
@@ -472,7 +477,17 @@ public class UnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto1", 1);
             PlayerPrefs.Save();
             manager1btn.interactable = false;
-            miner1.MoveMiner1();
+            if (miner1.collecting1 == false)
+            {
+                miner1.MoveMiner1();
+
+            }
+            else
+            {
+                miner1.collecting1 = true;
+            }
+            ads.ShowAd();
+
         }
     }
 
@@ -486,7 +501,15 @@ public class UnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto2", 1); // Use a different key for manager 2
             PlayerPrefs.Save();
             manager2btn.interactable = false;
-            miner2.MoveMiner2();
+            if (miner2.collecting2 == false)
+            {
+                miner2.MoveMiner2();
+
+            }
+            else
+            {
+                miner2.collecting2 = true;
+            }
         }
     }
 
@@ -500,7 +523,17 @@ public class UnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto3", 1); // Use a different key for manager 3
             PlayerPrefs.Save();
             manager3btn.interactable = false;
-            miner3.MoveMiner3();
+            if (miner3.collecting3 == false)
+            {
+                miner3.MoveMiner3();
+
+            }
+            else
+            {
+                miner3.collecting3 = true;
+            }
+            ads.ShowAd();
+
         }
     }
 
@@ -514,7 +547,15 @@ public class UnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto4", 1); // Use a different key for manager 4
             PlayerPrefs.Save();
             manager4btn.interactable = false;
-            miner4.MoveMiner4();
+            if (miner4.collecting4 == false)
+            {
+                miner4.MoveMiner4();
+
+            }
+            else
+            {
+                miner4.collecting4 = true;
+            }
         }
 
     }
@@ -529,7 +570,17 @@ public class UnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto5", 1); // Use a different key for manager 5
             PlayerPrefs.Save();
             manager5btn.interactable = false;
-            miner5.MoveMiner5();
+            if (miner5.collecting5 == false)
+            {
+                miner5.MoveMiner5();
+
+            }
+            else
+            {
+                miner5.collecting5 = true;
+            }
+            ads.ShowAd();
+
         }
     }
 
@@ -543,7 +594,15 @@ public class UnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto6", 1); // Use a different key for manager 6
             PlayerPrefs.Save();
             manager6btn.interactable = false;
-            miner6.MoveMiner6();
+            if (miner6.collecting6 == false)
+            {
+                miner6.MoveMiner6();
+
+            }
+            else
+            {
+                miner6.collecting6 = true;
+            }
         }
     }
 
@@ -690,17 +749,17 @@ public class UnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice1)
         {
             goldmanager.goldAmount -= powerprice1;
-            miner1.miningpower1++;
+            miner1.miningpower1+=2;
             powerprice1 *= 2;
             powerprice1text.text = powerprice1.ToString();
-            cps1++;
+            cps1+=2;
             cps_text1.text = cps1.ToString() + "/s";
             PlayerPrefs.SetInt("power1", miner1.miningpower1);
             PlayerPrefs.SetInt("powerprice1", powerprice1);
             PlayerPrefs.SetInt("cps1", cps1);
             PlayerPrefs.Save();
 
-            if (miner1.miningpower1 >=10 )
+            if (miner1.miningpower1 >=15 )
             {
                 powerprice1text.text = "Max";
             }
@@ -713,17 +772,17 @@ public class UnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice2)
         {
             goldmanager.goldAmount -= powerprice2;
-            miner2.miningpower2++;
+            miner2.miningpower2+=2;
             powerprice2 *= 2;
             powerprice2text.text = powerprice2.ToString();
-            cps2++;
+            cps2 += 2;
             cps_text2.text = cps2.ToString() + "/s";
             PlayerPrefs.SetInt("power2", miner2.miningpower2);
             PlayerPrefs.SetInt("powerprice2", powerprice2);
             PlayerPrefs.SetInt("cps2", cps2);
             PlayerPrefs.Save();
 
-            if (miner2.miningpower2 >= 15)
+            if (miner2.miningpower2 >= 20)
             {
                 powerprice2text.text = "Max";
             }
@@ -737,17 +796,17 @@ public class UnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice3)
         {
             goldmanager.goldAmount -= powerprice3;
-            miner3.miningpower3++;
+            miner3.miningpower3 += 2;
             powerprice3 *= 2;
             powerprice3text.text = powerprice3.ToString();
-            cps3++;
+            cps3+=2;
             cps_text3.text = cps3.ToString() + "/s";
             PlayerPrefs.SetInt("power3", miner3.miningpower3);
             PlayerPrefs.SetInt("powerprice3", powerprice3);
             PlayerPrefs.SetInt("cps3", cps3);
             PlayerPrefs.Save();
 
-            if (miner3.miningpower3 <= 25)
+            if (miner3.miningpower3 <= 30)
             {
                 powerprice3text.text = "Max";
             }
@@ -763,14 +822,14 @@ public class UnlockManager : MonoBehaviour
             miner4.miningpower4++;
             powerprice4 *= 2;
             powerprice4text.text = powerprice4.ToString();
-            cps4++;
+            cps4 += 2;
             cps_text4.text = cps4.ToString() + "/s";
             PlayerPrefs.SetInt("power4", miner4.miningpower4);
             PlayerPrefs.SetInt("powerprice4", powerprice4);
             PlayerPrefs.SetInt("cps4", cps4);
             PlayerPrefs.Save();
 
-            if (miner4.miningpower4 >= 40)
+            if (miner4.miningpower4 >= 45)
             {
                 powerprice4text.text = "Max";
             }
@@ -782,17 +841,17 @@ public class UnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice5)
         {
             goldmanager.goldAmount -= powerprice5;
-            miner5.miningpower5++; // Make sure you have miner5 defined
+            miner5.miningpower5 += 2; // Make sure you have miner5 defined
             powerprice5 *= 2;
             powerprice5text.text = powerprice5.ToString();
-            cps5++;
+            cps5 += 2;
             cps_text5.text = cps5.ToString() + "/s";
             PlayerPrefs.SetInt("power5", miner5.miningpower5);
             PlayerPrefs.SetInt("powerprice5", powerprice5);
             PlayerPrefs.SetInt("cps5", cps5);
             PlayerPrefs.Save();
 
-            if (miner5.miningpower5 >= 70)
+            if (miner5.miningpower5 >= 75)
             {
                 powerprice5text.text = "Max";
             }
@@ -804,17 +863,17 @@ public class UnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice6)
         {
             goldmanager.goldAmount -= powerprice6;
-            miner6.miningpower6++; // Make sure you have miner6 defined
+            miner6.miningpower6 += 2; // Make sure you have miner6 defined
             powerprice6 *= 2;
             powerprice6text.text = powerprice6.ToString();
-            cps6++;
+            cps6 += 2;
             cps_text6.text = cps6.ToString() + "/s";
             PlayerPrefs.SetInt("power6", miner6.miningpower6);
             PlayerPrefs.SetInt("powerprice6", powerprice6);
             PlayerPrefs.SetInt("cps6", cps6);
             PlayerPrefs.Save();
 
-            if (miner6.miningpower6 >= 130)
+            if (miner6.miningpower6 >= 135)
             {
                 powerprice6text.text = "Max";
             }
@@ -823,7 +882,7 @@ public class UnlockManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        /*PlayerPrefs.SetInt("speed1", miner1.miningspeed1);
+      /*  PlayerPrefs.SetInt("speed1", miner1.miningspeed1);
         PlayerPrefs.SetInt("speedprice1", speedprice1);
         PlayerPrefs.SetInt("cps1", cps1);
 
@@ -841,7 +900,7 @@ public class UnlockManager : MonoBehaviour
 
         PlayerPrefs.SetInt("powerprice1", powerprice1);
         PlayerPrefs.SetInt("powerprice2", powerprice2);
-        PlayerPrefs.SetInt("powerprice3", powerprice3);*/
+        PlayerPrefs.SetInt("powerprice3", powerprice3); */
     }
 
 

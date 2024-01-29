@@ -15,6 +15,7 @@ public class CoalUnlockManager : MonoBehaviour
 
     public CoalGoldManager goldmanager;
     public CoalManagers manager;
+    public InsAds ins;
 
     int shaft2Price = 5;
     int shaft3Price = 15;
@@ -347,9 +348,9 @@ public class CoalUnlockManager : MonoBehaviour
         {
             shaft2Unlocked = true;
             goldmanager.goldAmount -= shaft2Price;
-            PlayerPrefs.SetInt("coalgold", goldmanager.goldAmount);
+            PlayerPrefs.SetInt("coalgol ", goldmanager.goldAmount);
             PlayerPrefs.Save();
-            PlayerPrefs.SetInt("shaft2",1);
+            PlayerPrefs.SetInt("shaft2",1); 
 
             for (int i = 0; i < UnlockButtons.transform.childCount; i++)
             {
@@ -363,6 +364,7 @@ public class CoalUnlockManager : MonoBehaviour
                 Unlockables.transform.GetChild(1).gameObject.SetActive(true);
             }
 
+            ins.ShowAd();
         }
 
     }
@@ -413,6 +415,8 @@ public class CoalUnlockManager : MonoBehaviour
             {
                 Unlockables.transform.GetChild(3).gameObject.SetActive(true);
             }
+            ins.ShowAd();
+
         }
 
     }
@@ -460,6 +464,8 @@ public class CoalUnlockManager : MonoBehaviour
             {
                 Unlockables.transform.GetChild(5).gameObject.SetActive(true);
             }
+            ins.ShowAd();
+
         }
     }
 
@@ -473,7 +479,17 @@ public class CoalUnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto1", 1);
             PlayerPrefs.Save();
             manager1btn.interactable = false;
-            miner1.MoveMiner1();
+            if (miner1.collecting1 == false)
+            {
+                miner1.MoveMiner1();
+
+            }
+            else
+            {
+                miner1.collecting1 = true;
+            }
+            ins.ShowAd();
+
         }
     }
 
@@ -487,7 +503,15 @@ public class CoalUnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto2", 1); // Use a different key for manager 2
             PlayerPrefs.Save();
             manager2btn.interactable = false;
-            miner2.MoveMiner2();
+            if (miner2.collecting2 == false)
+            {
+                miner2.MoveMiner2();
+
+            }
+            else
+            {
+                miner2.collecting2 = true;
+            }
         }
     }
 
@@ -501,7 +525,17 @@ public class CoalUnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto3", 1); // Use a different key for manager 3
             PlayerPrefs.Save();
             manager3btn.interactable = false;
-            miner3.MoveMiner3();
+            if (miner3.collecting3 == false)
+            {
+                miner3.MoveMiner3();
+
+            }
+            else
+            {
+                miner3.collecting3 = true;
+            }
+            ins.ShowAd();
+
         }
     }
 
@@ -515,7 +549,15 @@ public class CoalUnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto4", 1); // Use a different key for manager 4
             PlayerPrefs.Save();
             manager4btn.interactable = false;
-            miner4.MoveMiner4();
+            if (miner4.collecting4 == false)
+            {
+                miner4.MoveMiner4();
+
+            }
+            else
+            {
+                miner4.collecting4 = true;
+            }
         }
 
     }
@@ -530,7 +572,17 @@ public class CoalUnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto5", 1); // Use a different key for manager 5
             PlayerPrefs.Save();
             manager5btn.interactable = false;
-            miner5.MoveMiner5();
+            if (miner5.collecting5 == false)
+            {
+                miner5.MoveMiner5();
+
+            }
+            else
+            {
+                miner5.collecting5 = true;
+            }
+            ins.ShowAd();
+
         }
     }
 
@@ -544,7 +596,15 @@ public class CoalUnlockManager : MonoBehaviour
             PlayerPrefs.SetInt("auto6", 1); // Use a different key for manager 6
             PlayerPrefs.Save();
             manager6btn.interactable = false;
-            miner6.MoveMiner6();
+            if (miner6.collecting6 == false)
+            {
+                miner6.MoveMiner6();
+
+            }
+            else
+            {
+                miner6.collecting6 = true;
+            }
         }
     }
 

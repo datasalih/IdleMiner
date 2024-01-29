@@ -72,7 +72,7 @@ public class CoalAdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
 
 
         CoalUpdateAdMoney();
-        PlayerPrefs.SetInt("coalgold", coalgmanager.goldAmount);
+        PlayerPrefs.SetInt("gold", coalgmanager.goldAmount);
         PlayerPrefs.Save();
 
 
@@ -104,7 +104,7 @@ public class CoalAdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
             coalgmanager.goldAmount += admoney;
             coalgmanager.coinText.text = coalgmanager.goldAmount.ToString();
 
-            PlayerPrefs.SetInt("coalgold", coalgmanager.goldAmount);
+            PlayerPrefs.SetInt("gold", coalgmanager.goldAmount);
             PlayerPrefs.Save();
 
         }
@@ -129,8 +129,7 @@ public class CoalAdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     void OnDestroy()
     {
 
-        PlayerPrefs.SetInt("coalgold", coalgmanager.goldAmount);
-        PlayerPrefs.Save();
+       
 
         // Clean up the button listeners:
         _showAdButton.onClick.RemoveAllListeners();
