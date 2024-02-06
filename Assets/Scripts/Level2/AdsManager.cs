@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using Unity.VisualScripting;
 using TMPro;
 
@@ -17,6 +16,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     private GameObject adbtn;
     public GoldManager goldmanager;
     public TMP_Text AdMoneyText;
+    private int adWatchCount = 0;
+    private const int maxAdViews = 9;
     void Awake()
     {
 #if UNITY_IOS
@@ -33,6 +34,12 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     private void Update()
     {
         UpdateAdMoney();
+
+        if (adWatchCount >= maxAdViews)
+        {
+            adbtn = GameObject.FindGameObjectWithTag("AdButton");
+            adbtn.GetComponent<Button>().interactable = false;
+        }
 
     }
 
@@ -63,22 +70,17 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 
     public void ShowRewardedAd()
     {
-
-
-  
+        if (adWatchCount <= maxAdViews)
+        {
             Advertisement.Show(_adUnitId, this);
-        adbtn = GameObject.FindGameObjectWithTag("AdButton");
-        adbtn.GetComponent<Button>().interactable = false;
-
-
-        PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
-        PlayerPrefs.Save();
-
-
+            adWatchCount++;
+            PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
+            PlayerPrefs.Save();
+        }
 
     }
 
-     
+
 
     // If the ad successfully loads, add a listener to the button and enable it:
     public void OnUnityAdsAdLoaded(string adUnitId)
@@ -128,8 +130,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     void OnDestroy()
     {
 
-        PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
-        PlayerPrefs.Save();
+    
 
         // Clean up the button listeners:
         _showAdButton.onClick.RemoveAllListeners();

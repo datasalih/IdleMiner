@@ -6,18 +6,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using TMPro;
 
-public class DiamondAdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
+public class RubyAdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] string _androidAdUnitId = "Rewarded_Android";
 
     string _adUnitId;
     [SerializeField] Button _showAdButton;
-    public int admoney = 450;
+    public int admoney = 200;
     private GameObject adbtn;
-    public DiamondGoldManager dmanager;
+    public RubyGoldManager dmanager;
     public TMP_Text AdMoneyText;
     private int adWatchCount = 0;
-    private const int maxAdViews = 9;
+    private const int maxAdViews = 3;
     void Awake()
     {
 #if UNITY_IOS
@@ -144,40 +144,40 @@ public class DiamondAdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     {
         if (dmanager.goldAmount < 1000)
         {
-            admoney = 150;
-            AdMoneyText.text = "+450";
+            admoney = 300;
+            AdMoneyText.text = "+" + admoney;
 
         }
         else if (dmanager.goldAmount >= 1000 && dmanager.goldAmount < 3000)
         {
-            admoney = 200;
-            AdMoneyText.text = "+600";
+            admoney = 400;
+            AdMoneyText.text = "+" + admoney;
 
         }
         else if (dmanager.goldAmount >= 3000 && dmanager.goldAmount < 5000)
         {
-            admoney = 250;
-            AdMoneyText.text = "+750";
+            admoney = 500;
+            AdMoneyText.text = "+" + admoney;
 
         }
 
         else if (dmanager.goldAmount >= 5000 && dmanager.goldAmount < 7000)
         {
-            admoney = 300;
-            AdMoneyText.text = "+900";
+            admoney = 600;
+            AdMoneyText.text = "+" + admoney;
 
         }
 
         else if (dmanager.goldAmount >= 7000 && dmanager.goldAmount < 10000)
         {
-            admoney = 350;
-            AdMoneyText.text = "+1050";
+            admoney = 800;
+            AdMoneyText.text = "+" + admoney;
 
         }
         else if (dmanager.goldAmount >= 10000)
         {
-            admoney = 500;
-            AdMoneyText.text = "+1500";
+            admoney = 1000;
+            AdMoneyText.text = "+" + admoney;
 
         }
 

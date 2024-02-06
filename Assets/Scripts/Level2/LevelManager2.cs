@@ -12,20 +12,11 @@ public class LevelManager2 : MonoBehaviour
 
 
 
-    private void Start()
-    {
-        level3unlocked = PlayerPrefs.GetInt("level3Unlocked", 0) == 1;
-
-
-   
- 
-    }
-
     void Update()
     {
-        if (manager.goldAmount >= 10000 )
+        if (manager.goldAmount >= 10000)
         {
-    
+
 
 
             if (!level3unlocked)

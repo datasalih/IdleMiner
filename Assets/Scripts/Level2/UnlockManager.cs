@@ -50,6 +50,10 @@ public class UnlockManager : MonoBehaviour
     int cps4 = 35;
     int cps5 = 65; // Added cps5
     int cps6 = 125; // Added cps6
+    int cpstotal=5;
+
+
+
 
     public bool shaft2Unlocked;
     public bool shaft3Unlocked;
@@ -94,6 +98,7 @@ public class UnlockManager : MonoBehaviour
     public TMP_Text cps_text4;
     public TMP_Text cps_text5; // Added cps_text5
     public TMP_Text cps_text6; // Added cps_text6
+    public TMP_Text cpstotal_text;
 
     private void Start()
     {
@@ -134,6 +139,10 @@ public class UnlockManager : MonoBehaviour
         cps4 = PlayerPrefs.GetInt("cps4", cps4); // Added cps4
         cps5 = PlayerPrefs.GetInt("cps5", cps5);
         cps6 = PlayerPrefs.GetInt("cps6", cps6);
+        cpstotal = PlayerPrefs.GetInt("cpstotal", cpstotal);
+
+
+   
 
         if (shaft2Unlocked)
         {
@@ -249,6 +258,8 @@ public class UnlockManager : MonoBehaviour
     private void Update()
     {
 
+
+
         powerprice1text.text = powerprice1.ToString();
         powerprice2text.text = powerprice2.ToString();
         powerprice3text.text = powerprice3.ToString();
@@ -269,6 +280,7 @@ public class UnlockManager : MonoBehaviour
         cps_text4.text = cps4.ToString() + "/s";
         cps_text5.text = cps5.ToString() + "/s";
         cps_text6.text = cps6.ToString() + "/s";
+        cpstotal_text.text = cpstotal.ToString() + "/s";
 
 
 
@@ -347,6 +359,8 @@ public class UnlockManager : MonoBehaviour
         {
             shaft2Unlocked = true;
             goldmanager.goldAmount -= shaft2Price;
+            cpstotal += 10;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
             PlayerPrefs.Save();
             PlayerPrefs.SetInt("shaft2",1);
@@ -373,6 +387,8 @@ public class UnlockManager : MonoBehaviour
         {
             shaft3Unlocked = true;
             goldmanager.goldAmount -= shaft3Price;
+            cpstotal += 20;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
             PlayerPrefs.SetInt("shaft3", 1);
 
@@ -398,6 +414,8 @@ public class UnlockManager : MonoBehaviour
         {
             shaft4Unlocked = true;
             goldmanager.goldAmount -= shaft4Price;
+            cpstotal += 35;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
             PlayerPrefs.SetInt("shaft4", 1);
 
@@ -425,6 +443,8 @@ public class UnlockManager : MonoBehaviour
         {
             shaft5Unlocked = true;
             goldmanager.goldAmount -= shaft5Price;
+            cpstotal += 65;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
             PlayerPrefs.SetInt("shaft5", 1);
 
@@ -448,6 +468,8 @@ public class UnlockManager : MonoBehaviour
         {
             shaft6Unlocked = true;
             goldmanager.goldAmount -= shaft6Price;
+            cpstotal += 125;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
             PlayerPrefs.SetInt("shaft6", 1);
 
@@ -616,8 +638,10 @@ public class UnlockManager : MonoBehaviour
             miner1.miningspeed1--;
             speedprice1 *= 2;
             speedprice1text.text = speedprice1.ToString();
-            cps1++;
+            cps1+=2;
             cps_text1.text = cps1.ToString() + "/s";
+            cpstotal+=2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed1", miner1.miningspeed1);
             PlayerPrefs.SetInt("speedprice1", speedprice1);
             PlayerPrefs.SetInt("cps1", cps1);
@@ -639,8 +663,10 @@ public class UnlockManager : MonoBehaviour
             miner2.miningspeed2--;
             speedprice2 *= 2;
             speedprice2text.text = speedprice2.ToString();
-            cps2++;
+            cps2+=2;
             cps_text2.text = cps2.ToString() + "/s";
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed2", miner2.miningspeed2);
             PlayerPrefs.SetInt("speedprice2", speedprice2);
             PlayerPrefs.SetInt("cps2", cps2);
@@ -662,10 +688,10 @@ public class UnlockManager : MonoBehaviour
             miner3.miningspeed3--;
             speedprice3 *= 2;
             cps_text3.text = cps3.ToString() + "/s";
-            cps3++;
+            cps3 += 2;
             cps_text3.text = cps3.ToString() + "/s";
-
-            // Save the updated values
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed3", miner3.miningspeed3);
             PlayerPrefs.SetInt("speedprice3", speedprice3);
             PlayerPrefs.SetInt("cps3", cps3);
@@ -686,8 +712,10 @@ public class UnlockManager : MonoBehaviour
             miner4.miningspeed4--;
             speedprice4 *= 2;
             speedprice4text.text = speedprice4.ToString();
-            cps4++;
+            cps4 += 2;
             cps_text4.text = cps4.ToString() + "/s";
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed4", miner4.miningspeed4);
             PlayerPrefs.SetInt("speedprice4", speedprice4);
             PlayerPrefs.SetInt("cps4", cps4);
@@ -708,8 +736,10 @@ public class UnlockManager : MonoBehaviour
             miner5.miningspeed5--; // Make sure you have miner5 defined
             speedprice5 *= 2;
             speedprice5text.text = speedprice5.ToString();
-            cps5++;
+            cps5 += 2;
             cps_text5.text = cps5.ToString() + "/s";
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed5", miner5.miningspeed5);
             PlayerPrefs.SetInt("speedprice5", speedprice5);
             PlayerPrefs.SetInt("cps5", cps5);
@@ -730,8 +760,10 @@ public class UnlockManager : MonoBehaviour
             miner6.miningspeed6--; // Make sure you have miner6 defined
             speedprice6 *= 2;
             speedprice6text.text = speedprice6.ToString();
-            cps6++;
+            cps6 += 2;
             cps_text6.text = cps6.ToString() + "/s";
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed6", miner6.miningspeed6);
             PlayerPrefs.SetInt("speedprice6", speedprice6);
             PlayerPrefs.SetInt("cps6", cps6);
@@ -754,6 +786,8 @@ public class UnlockManager : MonoBehaviour
             powerprice1text.text = powerprice1.ToString();
             cps1+=2;
             cps_text1.text = cps1.ToString() + "/s";
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power1", miner1.miningpower1);
             PlayerPrefs.SetInt("powerprice1", powerprice1);
             PlayerPrefs.SetInt("cps1", cps1);
@@ -777,6 +811,8 @@ public class UnlockManager : MonoBehaviour
             powerprice2text.text = powerprice2.ToString();
             cps2 += 2;
             cps_text2.text = cps2.ToString() + "/s";
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power2", miner2.miningpower2);
             PlayerPrefs.SetInt("powerprice2", powerprice2);
             PlayerPrefs.SetInt("cps2", cps2);
@@ -801,6 +837,8 @@ public class UnlockManager : MonoBehaviour
             powerprice3text.text = powerprice3.ToString();
             cps3+=2;
             cps_text3.text = cps3.ToString() + "/s";
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power3", miner3.miningpower3);
             PlayerPrefs.SetInt("powerprice3", powerprice3);
             PlayerPrefs.SetInt("cps3", cps3);
@@ -824,6 +862,8 @@ public class UnlockManager : MonoBehaviour
             powerprice4text.text = powerprice4.ToString();
             cps4 += 2;
             cps_text4.text = cps4.ToString() + "/s";
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power4", miner4.miningpower4);
             PlayerPrefs.SetInt("powerprice4", powerprice4);
             PlayerPrefs.SetInt("cps4", cps4);
@@ -846,6 +886,8 @@ public class UnlockManager : MonoBehaviour
             powerprice5text.text = powerprice5.ToString();
             cps5 += 2;
             cps_text5.text = cps5.ToString() + "/s";
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power5", miner5.miningpower5);
             PlayerPrefs.SetInt("powerprice5", powerprice5);
             PlayerPrefs.SetInt("cps5", cps5);
@@ -868,6 +910,8 @@ public class UnlockManager : MonoBehaviour
             powerprice6text.text = powerprice6.ToString();
             cps6 += 2;
             cps_text6.text = cps6.ToString() + "/s";
+            cpstotal += 2;
+            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power6", miner6.miningpower6);
             PlayerPrefs.SetInt("powerprice6", powerprice6);
             PlayerPrefs.SetInt("cps6", cps6);
@@ -880,28 +924,6 @@ public class UnlockManager : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-      /*  PlayerPrefs.SetInt("speed1", miner1.miningspeed1);
-        PlayerPrefs.SetInt("speedprice1", speedprice1);
-        PlayerPrefs.SetInt("cps1", cps1);
-
-        PlayerPrefs.SetInt("speed2", miner2.miningspeed2);
-        PlayerPrefs.SetInt("speedprice2", speedprice2);
-        PlayerPrefs.SetInt("cps2", cps2);
-
-        PlayerPrefs.SetInt("speed3", miner3.miningspeed3);
-        PlayerPrefs.SetInt("speedprice3", speedprice3);
-        PlayerPrefs.SetInt("cps3", cps3);
-
-        PlayerPrefs.SetInt("power1", miner1.miningpower1);
-        PlayerPrefs.SetInt("power2", miner2.miningpower2);
-        PlayerPrefs.SetInt("power3", miner3.miningpower3);
-
-        PlayerPrefs.SetInt("powerprice1", powerprice1);
-        PlayerPrefs.SetInt("powerprice2", powerprice2);
-        PlayerPrefs.SetInt("powerprice3", powerprice3); */
-    }
 
 
 

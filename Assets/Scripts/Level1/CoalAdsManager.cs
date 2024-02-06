@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using Unity.VisualScripting;
 using TMPro;
 
@@ -17,6 +16,8 @@ public class CoalAdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     private GameObject adbtn;
     public CoalGoldManager coalgmanager;
     public TMP_Text AdMoneyText;
+    private int adWatchCount = 0;
+    private const int maxAdViews = 3;
     void Awake()
     {
 #if UNITY_IOS
@@ -33,6 +34,13 @@ public class CoalAdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     private void Update()
     {
         CoalUpdateAdMoney();
+
+        if (adWatchCount >= maxAdViews)
+        {
+            adbtn = GameObject.FindGameObjectWithTag("AdButton");
+            adbtn.GetComponent<Button>().interactable = false;
+        }
+
 
     }
 
@@ -58,25 +66,16 @@ public class CoalAdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
 
     }
 
-
-
-
     public void ShowRewardedAd()
     {
-
-
-  
+        if (adWatchCount <= maxAdViews)
+        {
             Advertisement.Show(_adUnitId, this);
-        adbtn = GameObject.FindGameObjectWithTag("AdButton");
-        adbtn.GetComponent<Button>().interactable = false;
-
-
-        CoalUpdateAdMoney();
-        PlayerPrefs.SetInt("gold", coalgmanager.goldAmount);
-        PlayerPrefs.Save();
-
-
-
+            adWatchCount++;
+            PlayerPrefs.SetInt("gold", coalgmanager.goldAmount);
+            PlayerPrefs.Save();
+        }
+    
     }
 
      

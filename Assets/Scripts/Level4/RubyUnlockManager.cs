@@ -4,55 +4,54 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DiamondUnlockManager : MonoBehaviour
+public class RubyUnlockManager : MonoBehaviour
 {
-    public DiamondBaseMiner1 miner1;
-    public DiamondBaseMiner2 miner2;
-    public DiamondBaseMiner3 miner3;
-    public DiamondBaseMiner4 miner4;
-    public DiamondBaseMiner5 miner5; // Added BaseMiner5
-    public DiamondBaseMiner6 miner6; // Added BaseMiner6
+    public RubyBaseMiner1 miner1;
+    public RubyBaseMiner2 miner2;
+    public RubyBaseMiner3 miner3;
+    public RubyBaseMiner4 miner4;
+    public RubyBaseMiner5 miner5; 
+    public RubyBaseMiner6 miner6; 
 
-    public DiamondGoldManager goldmanager;
-    public DiamondManagers manager;
+    public RubyGoldManager goldmanager;
+    public RubyManagers manager;
     public InsAds insads;
     public IapManager apm;
 
-    int shaft2Price = 100;
-    int shaft3Price = 500;
-    int shaft4Price = 1500;
-    int shaft5Price = 4000; // Added shaft5Price
-    int shaft6Price = 9000; // Added shaft6Price
+    int shaft2Price = 300;
+    int shaft3Price = 1000;
+    int shaft4Price = 3000;
+    int shaft5Price = 6000; 
+    int shaft6Price = 20000; 
 
-    int autominingprice1 = 100;
-    int autominingprice2 = 250;
-    int autominingprice3 = 600;
-    int autominingprice4 = 1250;
-    int autominingprice5 = 2500; // Added autominingprice5
-    int autominingprice6 = 9000; // Added autominingprice6
+    int autominingprice1 = 300;
+    int autominingprice2 = 900;
+    int autominingprice3 = 2000;
+    int autominingprice4 = 5000;
+    int autominingprice5 = 10000; 
+    int autominingprice6 = 15000; 
 
-    int speedprice1 = 30;
-    int speedprice2 = 40;
-    int speedprice3 = 50;
-    int speedprice4 = 60;
-    int speedprice5 = 70; // Added speedprice5
-    int speedprice6 = 80; // Added speedprice6
+    int speedprice1 = 40;
+    int speedprice2 = 50;
+    int speedprice3 = 60;
+    int speedprice4 = 70;
+    int speedprice5 = 80; 
+    int speedprice6 = 90; 
 
-    int powerprice1 = 40;
-    int powerprice2 = 60;
-    int powerprice3 = 80;
-    int powerprice4 = 100;
-    int powerprice5 = 120; // Added powerprice5
-    int powerprice6 = 150; // Added powerprice6
+    int powerprice1 = 50;
+    int powerprice2 = 70;
+    int powerprice3 = 90;
+    int powerprice4 = 110;
+    int powerprice5 = 130; // Added powerprice5
+    int powerprice6 = 160; // Added powerprice6
 
-    int cps1 = 25;
-    int cps2 = 50;
-    int cps3 = 100;
-    int cps4 = 150;
-    int cps5 = 250; // Added cps5
-    int cps6 = 500; // Added cps6
-    int cpstotal=25;
-
+    int cps1 = 50;
+    int cps2 = 100;
+    int cps3 = 200;
+    int cps4 = 500;
+    int cps5 = 1000; // Added cps5
+    int cps6 = 2000; // Added cps6
+    int cpstotal=50;
 
 
 
@@ -69,8 +68,6 @@ public class DiamondUnlockManager : MonoBehaviour
     public bool autounlocked5; // Added autounlocked5
     public bool autounlocked6; // Added autounlocked6
 
-
-
     GameObject Unlockables;
     GameObject UnlockButtons;
 
@@ -78,8 +75,8 @@ public class DiamondUnlockManager : MonoBehaviour
     public Button manager2btn;
     public Button manager3btn;
     public Button manager4btn;
-    public Button manager5btn; // Added manager5btn
-    public Button manager6btn; // Added manager6btn
+    public Button manager5btn; 
+    public Button manager6btn; 
 
     public TMP_Text speedprice1text;
     public TMP_Text speedprice2text;
@@ -103,11 +100,8 @@ public class DiamondUnlockManager : MonoBehaviour
     public TMP_Text cps_text6; // Added cps_text6
     public TMP_Text cpstotal_text;
 
-
-
     private void Start()
     {
-
         Unlockables = GameObject.FindGameObjectWithTag("Unlockables");
         UnlockButtons = GameObject.FindGameObjectWithTag("UnlockButtons");
 
@@ -148,6 +142,7 @@ public class DiamondUnlockManager : MonoBehaviour
 
 
        
+
         if (shaft2Unlocked)
         {
             for (int i = 0; i < UnlockButtons.transform.childCount; i++)
@@ -263,6 +258,7 @@ public class DiamondUnlockManager : MonoBehaviour
     private void Update()
     {
 
+       
 
 
         powerprice1text.text = powerprice1.ToString();
@@ -326,32 +322,32 @@ public class DiamondUnlockManager : MonoBehaviour
 
         
 
-        if (miner1.miningpower1 >= 50)
+        if (miner1.miningpower1 >= 100)
         {
             powerprice1text.text = "Max";
         }
 
-        if (miner2.miningpower2 >= 75)
+        if (miner2.miningpower2 >= 150)
         {
             powerprice2text.text = "Max";
         }
 
-        if (miner3.miningpower3 >= 125)
+        if (miner3.miningpower3 >= 250)
         {
             powerprice3text.text = "Max";
         }
 
-        if (miner4.miningpower4 >= 175) // Added for miner4
+        if (miner4.miningpower4 >= 550) // Added for miner4
         {
             powerprice4text.text = "Max";
         }
 
-        if (miner5.miningpower5 >= 275) // Added for miner4
+        if (miner5.miningpower5 >= 1050) // Added for miner4
         {
             powerprice5text.text = "Max";
         }
 
-        if (miner6.miningpower6 >= 525) // Added for miner4
+        if (miner6.miningpower6 >= 2050) // Added for miner4
         {
             powerprice6text.text = "Max";
         }
@@ -364,7 +360,7 @@ public class DiamondUnlockManager : MonoBehaviour
         {
             shaft2Unlocked = true;
             goldmanager.goldAmount -= shaft2Price;
-            cpstotal += 50;
+            cpstotal += 100;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
             PlayerPrefs.Save();
@@ -392,7 +388,7 @@ public class DiamondUnlockManager : MonoBehaviour
         {
             shaft3Unlocked = true;
             goldmanager.goldAmount -= shaft3Price;
-            cpstotal += 100;
+            cpstotal += 200;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
             PlayerPrefs.SetInt("shaft3", 1);
@@ -419,7 +415,7 @@ public class DiamondUnlockManager : MonoBehaviour
         {
             shaft4Unlocked = true;
             goldmanager.goldAmount -= shaft4Price;
-            cpstotal += 150;
+            cpstotal += 500;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
             PlayerPrefs.SetInt("shaft4", 1);
@@ -448,7 +444,7 @@ public class DiamondUnlockManager : MonoBehaviour
         {
             shaft5Unlocked = true;
             goldmanager.goldAmount -= shaft5Price;
-            cpstotal += 250;
+            cpstotal += 1000;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
             PlayerPrefs.SetInt("shaft5", 1);
@@ -473,7 +469,7 @@ public class DiamondUnlockManager : MonoBehaviour
         {
             shaft6Unlocked = true;
             goldmanager.goldAmount -= shaft6Price;
-            cpstotal += 500;
+            cpstotal += 2000;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("gold", goldmanager.goldAmount);
             PlayerPrefs.SetInt("shaft6", 1);
@@ -644,9 +640,9 @@ public class DiamondUnlockManager : MonoBehaviour
             miner1.miningspeed1--;
             speedprice1 *= 2;
             speedprice1text.text = speedprice1.ToString();
-            cps1 += 5;
+            cps1 += 10;
             cps_text1.text = cps1.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed1", miner1.miningspeed1);
             PlayerPrefs.SetInt("speedprice1", speedprice1);
@@ -669,9 +665,9 @@ public class DiamondUnlockManager : MonoBehaviour
             miner2.miningspeed2--;
             speedprice2 *= 2;
             speedprice2text.text = speedprice2.ToString();
-            cps2+=5;
+            cps2 += 10;
             cps_text2.text = cps2.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed2", miner2.miningspeed2);
             PlayerPrefs.SetInt("speedprice2", speedprice2);
@@ -694,9 +690,9 @@ public class DiamondUnlockManager : MonoBehaviour
             miner3.miningspeed3--;
             speedprice3 *= 2;
             cps_text3.text = cps3.ToString() + "/s";
-            cps3+=5;
+            cps3 += 10;
             cps_text3.text = cps3.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed3", miner3.miningspeed3);
             PlayerPrefs.SetInt("speedprice3", speedprice3);
@@ -718,9 +714,9 @@ public class DiamondUnlockManager : MonoBehaviour
             miner4.miningspeed4--;
             speedprice4 *= 2;
             speedprice4text.text = speedprice4.ToString();
-            cps4+=5;
+            cps4 += 10;
             cps_text4.text = cps4.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed4", miner4.miningspeed4);
             PlayerPrefs.SetInt("speedprice4", speedprice4);
@@ -742,9 +738,9 @@ public class DiamondUnlockManager : MonoBehaviour
             miner5.miningspeed5--; // Make sure you have miner5 defined
             speedprice5 *= 2;
             speedprice5text.text = speedprice5.ToString();
-            cps5+=5;
+            cps5 += 10;
             cps_text5.text = cps5.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed5", miner5.miningspeed5);
             PlayerPrefs.SetInt("speedprice5", speedprice5);
@@ -766,9 +762,9 @@ public class DiamondUnlockManager : MonoBehaviour
             miner6.miningspeed6--; // Make sure you have miner6 defined
             speedprice6 *= 2;
             speedprice6text.text = speedprice6.ToString();
-            cps6+=5;
+            cps6 += 10;
             cps_text6.text = cps6.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("speed6", miner6.miningspeed6);
             PlayerPrefs.SetInt("speedprice6", speedprice6);
@@ -787,12 +783,12 @@ public class DiamondUnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice1)
         {
             goldmanager.goldAmount -= powerprice1;
-            miner1.miningpower1+=5;
+            miner1.miningpower1+=10;
             powerprice1 *= 2;
             powerprice1text.text = powerprice1.ToString();
-            cps1+=5;
+            cps1 += 10 ;
             cps_text1.text = cps1.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power1", miner1.miningpower1);
             PlayerPrefs.SetInt("powerprice1", powerprice1);
@@ -809,12 +805,12 @@ public class DiamondUnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice2)
         {
             goldmanager.goldAmount -= powerprice2;
-            miner2.miningpower2+=5;
+            miner2.miningpower2+=10;
             powerprice2 *= 2;
             powerprice2text.text = powerprice2.ToString();
-            cps2+=5;
+            cps2 += 10;
             cps_text2.text = cps2.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power2", miner2.miningpower2);
             PlayerPrefs.SetInt("powerprice2", powerprice2);
@@ -832,12 +828,12 @@ public class DiamondUnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice3)
         {
             goldmanager.goldAmount -= powerprice3;
-            miner3.miningpower3 += 5;
+            miner3.miningpower3 += 10;
             powerprice3 *= 2;
             powerprice3text.text = powerprice3.ToString();
-            cps3+=5;
+            cps3 += 10;
             cps_text3.text = cps3.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power3", miner3.miningpower3);
             PlayerPrefs.SetInt("powerprice3", powerprice3);
@@ -854,12 +850,12 @@ public class DiamondUnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice4)
         {
             goldmanager.goldAmount -= powerprice4;
-            miner4.miningpower4 += 5;
+            miner4.miningpower4 += 10;
             powerprice4 *= 2;
             powerprice4text.text = powerprice4.ToString();
-            cps4+=5;
+            cps4 += 10 ;
             cps_text4.text = cps4.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power4", miner4.miningpower4);
             PlayerPrefs.SetInt("powerprice4", powerprice4);
@@ -875,12 +871,12 @@ public class DiamondUnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice5)
         {
             goldmanager.goldAmount -= powerprice5;
-            miner5.miningpower5 += 5; // Make sure you have miner5 defined
+            miner5.miningpower5 += 10; // Make sure you have miner5 defined
             powerprice5 *= 2;
             powerprice5text.text = powerprice5.ToString();
-            cps5+=5;
+            cps5 += 10;
             cps_text5.text = cps5.ToString() + "/s";
-            cpstotal += 5;
+            cpstotal += 10;
             PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power5", miner5.miningpower5);
             PlayerPrefs.SetInt("powerprice5", powerprice5);
@@ -896,13 +892,11 @@ public class DiamondUnlockManager : MonoBehaviour
         if (goldmanager.goldAmount >= powerprice6)
         {
             goldmanager.goldAmount -= powerprice6;
-            miner6.miningpower6 += 5; // Make sure you have miner6 defined
+            miner6.miningpower6 += 10; // Make sure you have miner6 defined
             powerprice6 *= 2;
             powerprice6text.text = powerprice6.ToString();
-            cps6+=5;
+            cps6+=10;
             cps_text6.text = cps6.ToString() + "/s";
-            cpstotal += 5;
-            PlayerPrefs.SetInt("cpstotal", cpstotal);
             PlayerPrefs.SetInt("power6", miner6.miningpower6);
             PlayerPrefs.SetInt("powerprice6", powerprice6);
             PlayerPrefs.SetInt("cps6", cps6);
@@ -912,31 +906,7 @@ public class DiamondUnlockManager : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        /*PlayerPrefs.SetInt("speed1", miner1.miningspeed1);
-        PlayerPrefs.SetInt("speedprice1", speedprice1);
-        PlayerPrefs.SetInt("cps1", cps1);
 
-        PlayerPrefs.SetInt("speed2", miner2.miningspeed2);
-        PlayerPrefs.SetInt("speedprice2", speedprice2);
-        PlayerPrefs.SetInt("cps2", cps2);
-
-        PlayerPrefs.SetInt("speed3", miner3.miningspeed3);
-        PlayerPrefs.SetInt("speedprice3", speedprice3);
-        PlayerPrefs.SetInt("cps3", cps3);
-
-        PlayerPrefs.SetInt("power1", miner1.miningpower1);
-        PlayerPrefs.SetInt("power2", miner2.miningpower2);
-        PlayerPrefs.SetInt("power3", miner3.miningpower3);
-
-        PlayerPrefs.SetInt("powerprice1", powerprice1);
-        PlayerPrefs.SetInt("powerprice2", powerprice2);
-        PlayerPrefs.SetInt("powerprice3", powerprice3);*/
-
-
-    }
-
-
+    
 
 }
